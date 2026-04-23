@@ -111,7 +111,15 @@ with left:
     ).properties(height=300)
 
     st.altair_chart(chart, width="stretch")
+    
+with st.expander("📄 View Raw Data"):
 
+    st.write(f"Total Rows: {len(df):,}")
+
+    # limit rows for performance
+    limit = st.slider("Rows to display", 10, 500, 100)
+
+    st.dataframe(df.head(limit))
 # =====================================
 # RIGHT — COMPARISON (RESTORED)
 # =====================================
