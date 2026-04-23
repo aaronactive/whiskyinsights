@@ -114,12 +114,26 @@ with left:
     
 with st.expander("📄 View Raw Data"):
 
-    st.write(f"Total Rows: {len(df):,}")
+    total_rows = len(df)
 
-    # limit rows for performance
-    limit = st.slider("Rows to display", 10, 500, 100)
+    st.write(f"Total Rows: {total_rows:,}")
 
-    st.dataframe(df.head(limit))
+    page_size = st.slider("Rows per page", 50, 500, 100)
+
+    total_pages = (total_rows // page_size) + 1
+
+    page = st.number_input(
+        "Page",
+        min_value=1,
+        max_value=total_pages,
+        value=1
+    )
+
+    start = (page - 1) * page_size
+    end = start + page_size
+
+    st.dataframe(df.iloc[start:end])
+
 # =====================================
 # RIGHT — COMPARISON (RESTORED)
 # =====================================
