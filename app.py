@@ -6,7 +6,7 @@ import altair as alt
 DB_FILE = "whisky.db"
 
 st.set_page_config(layout="wide")
-st.title("🥃 Whisky Auction Overview")
+st.title("🥃 Whisky Prices Overview")
 
 # =========================
 # FIX METRIC SIZE
